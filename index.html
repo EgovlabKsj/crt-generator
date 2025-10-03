@@ -46,18 +46,18 @@ function generateCertificate() {
   const mobile = document.getElementById("mobileInput").value.trim();
   const email = document.getElementById("emailInput").value.trim();
 
-  if (!name || !mobile || !email) { alert("कृपया सभी विवरण भरें।"); return; }
+  if (!name || !mobile || !email) { alert("कृपया सभी विवरण भरें। return;"); return; }
 
   document.getElementById("nameText").textContent = name;
   document.getElementById("certificate").style.display = "block";
   window.scrollTo(0, document.getElementById("certificate").offsetTop);
 
-  // Send data to Google Sheet
+  // Send data to Google Sheet (GitHub Pages compatible)
   fetch(scriptURL, {
     method: "POST",
     body: JSON.stringify({ name, mobile, email }),
     headers: { "Content-Type": "application/json" },
-    mode: 'no-cors'
+    mode: 'no-cors' // important for GitHub Pages
   })
   .then(() => console.log("Data Sent"))
   .catch(err => console.error("Error!", err));
