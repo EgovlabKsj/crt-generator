@@ -111,11 +111,9 @@
     </div>
   </div>
 
-  <!-- html2canvas + jsPDF libraries -->
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script>
-    // ✅ Final Apps Script WebApp URL
     const scriptURL = "https://script.google.com/macros/s/AKfycbytPZCocDH8uH1idRBhayyquCF4fJxLiJXrvPwPBRwepAKIXKWIzT91ojMlggqcCR30/exec";
 
     function generateCertificate() {
@@ -128,18 +126,16 @@
         return;
       }
 
-      // केवल नाम certificate पर दिखेगा
       document.getElementById("nameText").textContent = name;
       document.getElementById("certificate").style.display = "block";
       window.scrollTo(0, document.getElementById("certificate").offsetTop);
 
-      // डेटा Google Sheet में भेजें
       fetch(scriptURL, {
         method: "POST",
         body: JSON.stringify({ name: name, mobile: mobile, email: email }),
         headers: { "Content-Type": "application/json" }
       })
-      .then(res => console.log("Data Saved"))
+      .then(res => res.json().then(data => console.log(data)))
       .catch(err => console.error("Error!", err));
     }
 
