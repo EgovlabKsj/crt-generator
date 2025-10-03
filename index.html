@@ -23,7 +23,7 @@
       margin: 20px auto;
       display: none;
       border: 4px solid #d4af37;
-      background: url("certificate-bg.png") no-repeat center center;
+      background: url("certificate-bg.png.png") no-repeat center center;
       background-size: cover;
     }
 
@@ -115,7 +115,7 @@
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script>
-    // ✅ आपके Apps Script WebApp URL
+    // ✅ Final Apps Script WebApp URL
     const scriptURL = "https://script.google.com/macros/s/AKfycbytPZCocDH8uH1idRBhayyquCF4fJxLiJXrvPwPBRwepAKIXKWIzT91ojMlggqcCR30/exec";
 
     function generateCertificate() {
@@ -138,8 +138,9 @@
         method: "POST",
         body: JSON.stringify({ name: name, mobile: mobile, email: email }),
         headers: { "Content-Type": "application/json" }
-      }).then(res => console.log("Data Saved"))
-        .catch(err => console.error("Error!", err));
+      })
+      .then(res => console.log("Data Saved"))
+      .catch(err => console.error("Error!", err));
     }
 
     async function downloadCertificate() {
