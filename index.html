@@ -13,7 +13,7 @@
     .main-title { position: absolute; top: 240px; width: 100%; text-align: center; font-size: 30px; font-weight: bold; color: #0b3d91; }
     .name-line { position: absolute; top: 280px; width: 100%; text-align: center; font-size: 22px; }
     .footer-text { position: absolute; bottom: 120px; width: 100%; text-align: center; font-size: 18px; }
-    .ref-no { position: absolute; bottom: 40px; width: 100%; text-align: center; font-size: 16px; font-weight: bold; color: #0b3d91; }
+    .ref-no { position: absolute; bottom: 20px; left: 30px; font-size: 14px; color: #000; font-style: italic; }
     button { margin-top: 10px; padding: 10px 20px; font-size: 16px; background: #0b3d91; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
     input { padding: 8px; font-size: 16px; width: 250px; margin: 5px; }
   </style>
@@ -81,7 +81,7 @@ async function downloadCertificate() {
   const cert = document.getElementById("certificate");
   await html2canvas(cert, { scale: 2 }).then(canvas => {
     const link = document.createElement("a");
-    link.download = "certificate.png";
+    link.download = "certificate.png";  // चाहें तो यहाँ referenceNo भी जोड़ सकते हैं
     link.href = canvas.toDataURL("image/png");
     link.click();
   });
